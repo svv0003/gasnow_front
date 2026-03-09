@@ -1,0 +1,82 @@
+/*****************************
+
+Noto Sans
+- 400 : Regular
+- 700 : Bold
+
+*****************************/
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* =================
+font-weight
+================= */
+.font-regular {
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.font-bold {
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+/* =================
+font-color
+================= */
+/* theme colors */
+.font-main {
+    color: #ff7700;
+}
+
+.font-sub1 {
+    color: #ffbd7b;
+}
+
+.font-sub2 {
+    color: #ffe3cb;
+}
+
+/* grayscale */
+.font-black {
+    color: #000000;
+}
+
+.font-white {
+    color: #ffffff;
+}
+
+.font-gray1 {
+    color: #e5e5e5;
+}
+
+.font-gray2 {
+    color: #afafaf;
+}
+
+.font-gray3 {
+    color: #696969;
+}
+
+/* ect */
+.font-green {
+    color: #218600;
+}
+
+.font-red {
+    color: #ff0004;
+}
+
+.font-blue {
+    color: #2e1fd5;
+}
+
+/* =================
+font-size : 필요 시 추가
+================= */

@@ -1,0 +1,417 @@
+/* ========================================
+웹 사이즈
+======================================== */
+@media (min-width: 451px) {
+    .mypage-wrapper {
+        display: flex;
+        margin: 0 auto;
+        width: 75vw;
+        /*max-width: 1300px;*/
+        min-width: 500px;
+        height: 100vh;
+    }
+
+    .nav-area {
+        width: var(--sidebar-width);
+        height: var(--sidebar-height);
+    }
+
+    .mypage-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-top: 4rem;
+        align-items: center;
+    }
+
+    .menu-container {
+        width: 75vw;
+    }
+
+    .info-gap {
+        flex: 0 0 10em;
+    }
+
+    /* 모달 팝업 */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }
+
+    .modal .modal_popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 50%;
+        height: 80vh;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* ========================================
+모바일 사이즈
+======================================== */
+@media (max-width: 450px) {
+    .mypage-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /*max-width: 350px;*/
+        margin: 0 auto; /* 부모 기준 가로 가운데 정렬 */
+        gap: 30px;
+    }
+
+    .nav-area {
+        height: var(--sidebar-height);
+    }
+
+    .mypage-container {
+        padding: 1.5rem 1rem 2rem 1rem;
+    }
+
+    .menu-container {
+        max-width: 100%;
+        width: 90vw;
+    }
+
+    .info-gap {
+        flex: 0 0 1em;
+    }
+
+    /* 모달 팝업 */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:100vw;
+        height: 100vh;
+        /*overflow: hidden;*/
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }
+
+    .modal .modal_popup {
+        position: absolute;
+        top: 53%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 70%;
+        height: 50vh;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* ========================================
+웹, 모바일 공통 속성
+======================================== */
+li {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.mypage-wrapper {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    overflow-y: hidden;
+}
+
+.mypage-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.mypage-container > h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/*.menu-container {*/
+/*    width: 100%;*/
+/*    !*max-width: 500px;*!*/
+/*}*/
+
+.menu-container > button {
+    background-color: #f4f7fa;
+    width: 100%;
+}
+
+.menu-container .collapsible {
+    color: #000000;
+    cursor: pointer;
+    padding: 1.12em;
+    width: 100%;
+    border: none;
+    border-top: 1px solid #666666;
+    text-align: left;
+    outline: none;
+    font-size: 0.9em;
+}
+
+.menu-container:last-child {
+    border-bottom: 1px solid #666666;
+}
+
+.collapsible::after {
+    content: "+";
+    font-size: 1.2em;
+    color: #afafaf;
+    float: right;
+    margin-left: 0.8em;
+}
+
+.open:after {
+    content: "–";
+    font-size: 01.2em;
+}
+
+.menu-container:nth-last-child(-n+2) .collapsible::after {
+    content: '';
+}
+
+.open, .collapsible:hover {
+    background-color: #f3e1d4;
+}
+
+.content {
+    padding: 0 18px;
+    overflow: hidden;
+    background-color: #ffeedf;
+
+    /* 내려오는 효과 */
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+.content-item  h4 {
+    padding-bottom: 0.3em;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+#pointContent {
+    text-align: center;
+}
+
+.content-box {
+    padding: 1.5em 1em;
+}
+
+.total-point {
+    font-size: 1.2em;
+}
+
+.content-btn {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.content-btn > button {
+    background-color: #FFC696;
+    border: 1px solid #FF7700;
+    border-radius: 12px;
+    color: #000000;
+    padding: 5px 10px;
+}
+
+.content-btn > button:hover {
+    background-color: #ffbd88;
+}
+
+/* 리뷰 목록 조회 */
+.review-item {
+    display: flex;
+}
+
+#reviewDate {
+    flex: 0 0 7em;
+}
+
+#reviewStation {
+    flex: 1;
+}
+
+#reviewRating {
+    flex: 0 0 6em;
+}
+
+.review-item i {
+    color: #FFC402;
+}
+
+/* 회원정보 조회 */
+#userInfoList {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+
+    justify-content: center;
+}
+
+.userInfoItem {
+    display: flex;
+    gap: 3px;
+}
+
+.info-title {
+    flex: 0 0 4em;
+}
+
+.info-cell {
+    flex: 1;
+    justify-content: flex-start;
+}
+
+/* 모달팝업 영역 스타일 */
+.modal-box {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal .modal_popup .modal-btn {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.modal .modal_popup .close_btn {
+    display: block;
+    padding: 10px 20px;
+    background-color: #ff7700;
+    color: #ffffff;
+    font-size: 1.1rem;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#pointModalBtn:hover {
+    background-color: #ee6c00;
+    transition: background-color 0.2s ease;
+}
+
+#pwModalBtn:hover {
+    background-color: #ee6c00;
+    transition: background-color 0.2s ease;
+}
+
+.modal.on {
+    display: block;
+}
+
+/* 포인트 내역 모달팝업 */
+.modal-box > h3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.history-content {
+    display: flex;
+    padding: 8px 8px;
+    border-top: 1px solid #afafaf;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.history-list:last-child {
+    border-bottom: 1px solid #afafaf;
+}
+
+.history-content .content-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-description {
+    font-size: 0.9em;
+}
+
+.content-date {
+    /*flex: 0 0 9em;*/
+    font-size: 0.75em;
+}
+
+.content-point {
+    /*flex: 0 0 9em;*/
+    /*align-items: flex-end;*/
+    font-size: 0.9em;
+}
+
+/* 비밀번호 변경 모달팝업 */
+.pw-content {
+    display: flex;
+    padding: 8px 8px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    max-width: 360px;
+    margin-bottom: 20px;
+}
+
+.form-item label {
+    margin-bottom: 0.4rem;
+    align-self: flex-start;
+    font-size: 0.9rem;
+    color: #000000;
+    padding-left: 5px
+}
+
+.form-item input[type="password"] {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border-radius: 20px;
+    border: 1.5px solid #afafaf;
+    box-sizing: border-box;
+}
+
+.form-item input[type="password"]:focus {
+    border: 1px solid #ff7700;
+    outline: none;
+}
+
+.alertBox {
+    font-size: 0.8em;
+    color: #696969;
+}
+
+.required {
+    color: #ff0004;
+}

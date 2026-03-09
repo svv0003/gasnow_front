@@ -1,0 +1,43 @@
+
+<div th:fragment="header">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/jidoFavorites.css">
+
+    <aside class="main-sidebar">
+        <div class="sidebar-logo">
+            <a href="/">
+                <img src="/logo/logo-small-white.png" alt="GASNOW Logo" class="logo-default">
+                <img src="/logo/logo-small-orange.png" alt="GASNOW Logo Hover" class="logo-hover">
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="/">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jido">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Map</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/favorites">
+                        <i class="fas fa-star"></i>
+                        <span>Favorite</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-profile active">
+            <a href="/mypage">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </aside>
+</div>

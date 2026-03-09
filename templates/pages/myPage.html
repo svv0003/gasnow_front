@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>마이페이지</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/myPage.css">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div class="mypage-wrapper">
+    <div class="nav-area"></div>
+
+    <div class="mypage-container">
+        <h1>MY PAGE</h1>
+        <!-- 리뷰 내역 조회 -->
+        <div class="menu-container">
+            <button type="button" class="collapsible">나의 리뷰</button>
+            <div class="content">
+                <div class="content-box">
+                    <div class="content-item">
+                        <h4>나의 리뷰</h4>
+                    </div>
+                    <div class="content-item">
+                        <ul id="reviewList">
+                            <li>test</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 리뷰 내역 조회 -->
+
+        <!-- 포인트 변동 내역 모달팝업 -->
+        <div class="modal" id="pointModal">
+            <div class="modal_popup">
+                <div class="modal-box">
+                    <h3><span id="modalUserName"></span> 님의 포인트 적립 / 사용 내역</h3>
+                    <div class="history-list">
+                        <div class="history-content">
+                            <div class="content-description">test-설명</div>
+                            <div class="content-date">test-날짜</div>
+                            <div class="content-point">test-변동포인트</div>
+                            <div class="content-remaining">test-잔여포인트</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-btn">
+                    <button type="button" class="close_btn" id="pointModalBtn">닫기</button>
+                </div>
+            </div>
+        </div>
+        <!-- end 모달팝업 -->
+
+        <!-- 보유 포인트 조회 -->
+        <div class="menu-container">
+            <button type="button" class="collapsible font-regular">보유 포인트</button>
+            <div class="content">
+                <div class="content-box">
+                    <div class="content-item" id="pointTitle">
+                        <h4>보유 포인트</h4>
+                    </div>
+                    <div class="content-item" id="pointContent">
+                        <strong class="total-point font-main font-bold" id="totalPoint">test</strong>
+                        <strong class="total-point font-main font-bold"> P</strong>
+                    </div>
+                    <div class="content-item">
+                        <div class="content-btn" id="pointBtn">
+                            <button type="button" id="pointListBtn">포인트 적립 / 사용내역</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 보유 포인트 조회 -->
+
+        <!-- 비밀번호 변경 모달팝업 -->
+        <div class="modal" id="pwModal">
+            <div class="modal_popup">
+                <div class="modal-box">
+                    <h3>비밀번호 변경</h3>
+                    <div class="pw-content">
+                        <form id="pwChangeForm">
+                            <div class="form-item">
+                                <label>현재 비밀번호<span class="required">*</span></label>
+                                <input type="password"
+                                       name="currentPw"
+                                       id="currentPw"
+                                       placeholder="현재 비밀번호를 입력하세요"/>
+                            </div>
+
+                            <div class="form-item">
+                                <label>변경 비밀번호<span class="required">*</span></label>
+                                <input type="password"
+                                       name="newPw"
+                                       id="newPw"
+                                       placeholder="새로운 비밀번호를 입력하세요"/>
+                                <div class="alertBox" id="pwAlertItem">
+                                    영문, 숫자, 특수문자를 조합하여 입력해주세요. (8-16자)
+                                </div>
+                            </div>
+
+                            <div class="form-item">
+                                <label>비밀번호 확인<span class="required">*</span></label>
+                                <input type="password"
+                                       name="newPwChk"
+                                       id="newPwChk"
+                                       placeholder="새로운 비밀번호 확인"/>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-btn">
+                        <button type="button" class="close_btn" id="pwModalBtn">변경</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 모달팝업 -->
+
+        <!-- 회원정보 조회 -->
+        <div class="menu-container">
+            <button type="button" class="collapsible">회원정보</button>
+            <div class="content">
+                <div class="content-box">
+                    <div class="content-item">
+                        <h4>회원정보</h4>
+                    </div>
+                    <div class="content-item" id="infoList">
+                        <ul id="userInfoList">
+                            <li>test</li>
+                        </ul>
+                    </div>
+                    <div class="content-item">
+                        <div class="content-btn" id="infoBtn">
+                            <button type="button" id="pwChangeBtn">비밀번호 변경</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 회원정보 조회 -->
+
+        <!-- 로그아웃 -->
+        <div class="menu-container">
+            <button type="button" class="collapsible" id="logoutBtn">로그아웃</button>
+        </div>
+        <!-- end 로그아웃 -->
+
+        <!-- 회원탈퇴 -->
+        <div class="menu-container">
+            <button type="button" class="collapsible" id="withdrawBtn">회원탈퇴</button>
+        </div>
+        <!-- end 회원탈퇴 -->
+    </div>
+</div>
+
+<script src="/js/myPage.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+/* --- 기본 스타일 --- */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    /* 수정(유성) */
+    font-family: "Noto Sans", sans-serif;
+    background-color: #f4f7fa;
+    overflow-y: hidden;
+
+}
+
+/* --- (NEW) CSS 변수 정의 --- */
+:root {
+    /* 사이드바 너비를 정의합니다.
+      - 최솟값: 160px
+      - 선호값: 화면 너비의 12% (12vw)
+      - 최댓값: 220px
+    */
+    --sidebar-width: clamp(160px, 12vw, 220px);
+}
+
+@media(min-width: 451px){
+    /* --- 1. 사이드바 --- */
+    .main-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+
+        /* (UPDATED) 고정값 대신 변수를 사용합니다. */
+        width: var(--sidebar-width);
+
+        background-color: #1f1f1f;
+        color: #ffffff;
+        border-radius: 0 80px 80px 0;
+        background: linear-gradient(0deg, #e2e2e2 0%, #000 99.99%, #cdcdcd 100%);
+        box-shadow: 5px 0 20px 0 rgba(0, 0, 0, 0.25);
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        /* (UPDATED) 패딩도 %/vw/vh를 사용해 유동적으로 변경 */
+        /* padding: 3vh 20px;  */
+        padding: 3vh 10px;
+
+        box-sizing: border-box;
+        z-index: 1001;
+    }
+
+    /* --- 1-1. 사이드바 로고 (수정된 부분) --- */
+    .sidebar-logo {
+        text-align: center;
+        margin-bottom: 40px;
+        /* 수정(유성) */
+        margin-top: 10px;
+        padding-right: 10px;
+    }
+
+    /* <a> 태그를 이미지의 '컨테이너'로 만듭니다. */
+    .sidebar-logo a {
+        display: block; /* <img> 태그가 기준을 잡을 수 있게 block으로 변경 */
+        position: relative; /* <img>를 겹치기 위한 기준점(relative) */
+
+        /* 로고 크기만큼의 영역을 미리 잡아줍니다. (img의 max-width와 동일하게 설정) */
+        max-width: 130px;
+        margin: 0 auto; /* text-align: center 대신 사용 */
+    }
+
+    /* 모든 로고 이미지의 공통 스타일 */
+    .sidebar-logo img {
+        /* 반응형 크기 유지 */
+        width: 100%; /* 부모(a 태그)의 100%를 채움 */
+        height: auto;
+
+        /* 부드러운 전환 효과 */
+        transition: opacity 0.3s ease;
+
+        /* (참고) 이미지가 겹칠 때 기본 로고가 깜빡이는 것을 방지하기 위해
+          기본 로고를 블록으로 처리합니다. (호버 이미지는 absolute)
+        */
+        display: block;
+    }
+
+    /* 호버용 로고 스타일 */
+    .sidebar-logo .logo-hover {
+        /* 1. 기본 로고 위에 정확히 겹치기 */
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        /* 2. 평소에는 숨기기 (투명도 0) */
+        opacity: 0;
+    }
+
+    /* --- 호버 시 로고 교체 --- */
+
+    /* 1. <a>에 호버하면 기본 로고(default)를 숨김 */
+    .sidebar-logo a:hover .logo-default {
+        opacity: 0;
+    }
+
+    /* 2. <a>에 호버하면 호버 로고(hover)를 보여줌 */
+    .sidebar-logo a:hover .logo-hover {
+        opacity: 1;
+    }
+
+    /* 1-2. 사이드바 네비게이션 (이하 동일) */
+    .sidebar-nav {
+        flex-grow: 1;
+    }
+
+    .sidebar-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-nav li {
+        /* margin-bottom: 10px; */
+        /* 수정(유성) */
+        margin-bottom: 20px;
+    }
+
+    .sidebar-nav a {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        text-decoration: none;
+        color: #aaaaaa;
+        /* font-size: 16px; */
+        /* 수정(유성) */
+        font-size: 18px;
+        font-weight: 400;
+        border-radius: 8px;
+    }
+
+    .sidebar-nav a i {
+        width: 20px;
+        margin-right: 15px;
+        font-size: 18px;
+    }
+
+    .sidebar-nav a.active {
+        /* background-color: #333333; */
+        /* 수정(유성) */
+        background-color: #2a2a2a;
+        color: #f70;
+        /* 수정(유성) */
+        font-weight: 700;
+    }
+
+    .sidebar-nav a:not(.active):hover {
+        background-color: #2a2a2a;
+        color: #f70;
+    }
+
+    /* 1-3. 하단 프로필 (이하 동일) */
+    .sidebar-profile {
+        text-align: center;
+        padding-top: 20px;
+        /* 수정(유성) */
+        padding-bottom: 20px;
+    }
+
+    .sidebar-profile a {
+        color: #aaaaaa;
+        font-size: 22px;
+        /* padding: 10px; */
+        /* 수정(유성) */
+        padding: 10px 15px;
+        transition: color 0.2s;
+        /* 수정(유성) */
+        border-radius: 8px;
+    }
+
+    .sidebar-profile a:hover {
+        /* 수정(유성) */
+        background-color: #afafaf;
+        color: #f70;
+    }
+
+    .sidebar-profile a.active {
+        background-color: #afafaf;
+        color: #f70;
+    }
+
+    /* --- 2. 헤더 --- */
+    .main-header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: fixed;
+        top: 0;
+
+        /* (UPDATED) 고정값(220px) 대신 변수를 사용합니다. */
+        left: var(--sidebar-width);
+
+        /* (UPDATED) 고정값(220px) 대신 변수를 사용합니다. */
+        width: calc(100% - var(--sidebar-width));
+
+        height: 70px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 0 30px;
+        box-sizing: border-box;
+        z-index: 1000;
+    }
+
+    .header-placeholder {
+        flex-grow: 1;
+    }
+
+    /* 헤더 버튼 스타일 (이하 동일) */
+    .auth-buttons .btn {
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1px solid #555;
+        border-radius: 6px;
+        font-size: 14px;
+        margin-left: 10px;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .auth-buttons .btn-login {
+        background-color: #333;
+        color: #ffffff;
+        border-color: #333;
+    }
+
+    .auth-buttons .btn-signup {
+        background-color: #f0f0f0;
+        color: #333;
+        border-color: #f0f0f0;
+    }
+
+    .auth-buttons .btn-login:hover {
+        background-color: #444;
+    }
+
+    .auth-buttons .btn-signup:hover {
+        background-color: #ffffff;
+        border-color: #ccc;
+    }
+
+
+
+
+}
+
+/*    !important     */
+@media(max-width: 450px){
+    /* ====================== 기본 헤더 사이드 바 ======================*/
+    :root {
+        /* 사이드바 너비를 정의합니다.
+          - 최솟값: 160px
+          - 선호값: 화면 높이의 12% (12vw)
+          - 최댓값: 220px
+        */
+        --sidebar-height: clamp(10px, 7vh, 220px);
+    }
+
+    /* --- 1. 사이드바 --- */
+    .main-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        /* (UPDATED) 고정값 대신 변수를 사용합니다. */
+        height: var(--sidebar-height);
+
+        background-color: #1f1f1f;
+        color: #ffffff;
+        background: white;
+        box-shadow: 5px 0 20px 0 rgba(0, 0, 0, 0.25);
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        /* (UPDATED) 패딩도 %/vw/vh를 사용해 유동적으로 변경 */
+        /* padding: 3vh 20px;  */
+        /*padding: 3vh 10px;*/
+
+        box-sizing: border-box;
+        z-index: 1001;
+    }
+
+    .sidebar-logo {
+        text-align: center;
+        position: fixed;
+        left: 3%;
+    }
+
+    /* <a> 태그를 이미지의 '컨테이너'로 만듭니다. */
+    .sidebar-logo a {
+        display: block; /* <img> 태그가 기준을 잡을 수 있게 block으로 변경 */
+        position: relative; /* <img>를 겹치기 위한 기준점(relative) */
+
+        /* 로고 크기만큼의 영역을 미리 잡아줍니다. (img의 max-width와 동일하게 설정) */
+        max-width: 12vw;
+        margin: 0 auto; /* text-align: center 대신 사용 */
+    }
+
+
+    /* 모든 로고 이미지의 공통 스타일 */
+    .sidebar-logo img {
+        /* 반응형 크기 유지 */
+        width: 100%; /* 부모(a 태그)의 100%를 채움 */
+        height: auto;
+
+        /* 부드러운 전환 효과 */
+        transition: opacity 0.3s ease;
+
+        /* (참고) 이미지가 겹칠 때 기본 로고가 깜빡이는 것을 방지하기 위해
+          기본 로고를 블록으로 처리합니다. (호버 이미지는 absolute)
+        */
+        display: block;
+    }
+
+    /* 호버용 로고 스타일 */
+    .sidebar-logo .logo-default {
+        /* 1. 기본 로고 위에 정확히 겹치기 */
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        /* 2. 평소에는 숨기기 (투명도 0) */
+        opacity: 0;
+    }
+
+    /* --- 호버 시 로고 교체 --- */
+
+    /* 1. <a>에 호버하면 기본 로고(default)를 숨김 */
+    .sidebar-logo a:hover .logo-hover {
+        opacity: 0;
+    }
+
+    /* 2. <a>에 호버하면 호버 로고(hover)를 보여줌 */
+    .sidebar-logo a:hover .logo-default {
+        opacity: 1;
+    }
+
+    /* 1-2. 사이드바 네비게이션 (이하 동일) */
+    .sidebar-nav {
+        flex-grow: 1;
+        position: fixed; /* 화면 고정 */
+        right: 3%;       /* 우측 끝 */
+        top: auto;
+    }
+
+    .sidebar-nav ul {
+        list-style: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;              /* 가로 정렬 */
+        flex-direction: row;        /* 행 방향으로 */
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        transform: translateX(-15vw);
+    }
+
+
+    /*.sidebar-nav li {*/
+    /*    !* margin-bottom: 10px; *!*/
+    /*    !* 수정(유성) *!*/
+    /*    margin-bottom: 20px;*/
+    /*}*/
+
+
+
+    .sidebar-nav a {
+        display: flex;
+        /*align-items: center;*/
+        padding: 5px 5px;
+        text-decoration: none;
+        color: #aaaaaa;
+        /* font-size: 16px; */
+        /* 수정(유성) */
+        font-size: 22px;
+        font-weight: 400;
+        border-radius: 8px;
+    }
+
+    .sidebar-nav a i {
+        width: auto;
+        font-size: 22px;
+    }
+
+    .sidebar-nav a span{
+        display: none;
+    }
+
+    /* 기본적으로 모든 li 숨기기 */
+    .sidebar-nav ul li a{
+        display: none;
+    }
+
+    /* active 클래스가 있는 li만 보이게 */
+    .sidebar-nav ul li a.active1 {
+        display: flex; /* 기존 a 스타일 유지 */
+
+    }
+
+
+
+
+    .sidebar-profile {
+        position: absolute; /* 부모 flex 영향 받지 않음 */
+        right: 5vw;         /* 오른쪽 끝으로 붙이기 */
+        display: inline-block; /* 버튼 크기만 영역 */
+        padding: 5px 0;
+    }
+
+    .sidebar-profile a {
+        display: inline-block;
+        color: #aaaaaa;
+        font-size: 22px;
+        /* padding: 10px; */
+        /* 수정(유성) */
+        padding: 5px 5px;
+        transition: color 0.2s;
+        /* 수정(유성) */
+        border-radius: 8px;
+    }
+
+
+    /* ====================== 기본 헤더 사이드 바 마무리======================*/
+
+
+}

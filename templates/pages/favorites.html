@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="../css/jidoFavorites.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+<div class="map_wrap">
+    <div id="map" style="width:100vw;height:100vh;overflow:hidden;"></div>
+
+    <div class="mobile-map-fav-btn">
+        <button id="go-jido"><i class="fas fa-map-marker-alt"></i></button>
+        <button id="go-fav"><i class="fa-solid fa-star"></i></button>
+    </div>
+</div>
+
+<div th:replace="~{header :: header}"></div>
+
+
+<aside class="right-info">
+    <button class="list-hide-desktop">|||</button>
+    <button class="list-hide-mobile">=</button>
+    <div class="gas-info"> <div class="info-top">
+        <h1>즐겨찾기 목록</h1>
+    </div>
+
+        <div id="favorites-list-container">
+        </div>
+
+        <div class="gs-detail" style="display: none;">
+            <div class="detail-top">
+                <h3 id="info-gsName"></h3>
+                <button id="outInfo">X</button>
+                <button id="fav-unFilled"><i class="fa-regular fa-star"></i></button>
+                <button id="fav-filled"><i class="fa-solid fa-star"></i></button>
+                <span id="rating-result"><span id="result-star"><i class="fa-solid fa-star gold-star"></i></span>
+                                                <span id="result-score"></span>
+                                                (<span id="count-rating"></span>)
+                        </span>
+                <button id="rating-btn">리뷰하기</button>
+                <span id="gs-address"></span>
+                <span id="gs-number"></span>
+                <table id="oil-info-table" border="1" cellspacing="0" cellpadding="5">
+                    <thead id="oil-info-head">
+                        <tr>
+                            <th>유종</th>
+                            <th>경유</th>
+                            <th>휘발유</th>
+                            <th>고급휘발유</th>
+                            <th>실내등유</th>
+                            <th>LPG</th>
+                        </tr>
+                    </thead>
+                    <tbody id="oil-info-body">
+                    <tr>
+                        <td>가격<br>
+                            <span id="oil-info-area"></span>
+                        </td>
+                        <td><span id="oil-diesel-price1"></span><br>
+                            <span id="oil-diesel-price2"></span>
+                        </td>
+                        <td><span id="oil-gasoline-price1"></span><br>
+                            <span id="oil-gasoline-price2"></span>
+                        </td>
+                        <td><span id="oil-premiumGasoline-price1"></span><br>
+                            <span id="oil-premiumGasoline-price2"></span>
+                        </td>
+                        <td><span id="oil-kerosene-price1"></span><br>
+                            <span id="oil-kerosene-price2"></span>
+                        </td>
+                        <td><span id="oil-lpg-price1"></span><br>
+                            <span id="oil-lpg-price2"></span>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="rating-info">
+
+                <span id="myScore">0.0</span>
+                <button id="outRating">X</button>
+                <div id="ratingScore">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <button id="giveRating">확인</button>
+            </div>
+        </div> </div> </aside>
+
+
+
+
+
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=536af43f432cf63c34cf438bc785017a&autoload=false"></script>
+
+<script src="../../js/favorites.js"></script>
+</body>
+
+
+</html>
